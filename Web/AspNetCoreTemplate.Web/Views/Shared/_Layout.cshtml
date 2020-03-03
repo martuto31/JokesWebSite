@@ -1,0 +1,103 @@
+﻿@using AspNetCoreTemplate.Common
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
+
+    <environment names="Development">
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+    <environment names="Staging,Production">
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+</head>
+<body style="background-color: lightgray">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3" style="background-color: chocolate;">
+            <div class="container" style="font-size:large">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Начална страница</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Vicove" asp-action="Create">Качи виц</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>*@
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="list-group-horizontal-md-2"  style="font-family:cursive">
+                        <p class="text-center">Категории:</p>
+                        <a href="/Vicove/Blondinki" class="list-group-item list-group-item-action active">Блондинки</a>
+                        <a href="/Vicove/BaiGanio" class="list-group-item list-group-item-action active">Бай Ганьо</a>
+                        <a href="/Vicove/Zhivotni" class="list-group-item list-group-item-action active">Животни</a>
+                        <a href="/Vicove/IvanchoIMariika" class="list-group-item list-group-item-action active">Иванчо и Марийка</a>
+                        <a href="/Vicove/Ludi" class="list-group-item list-group-item-action active">Луди</a>
+                        <a href="/Vicove/Laforizmi" class="list-group-item list-group-item-action active">Лафоризми</a>
+                        <a href="/Vicove/Mutri" class="list-group-item list-group-item-action active">Мутри</a>
+                        <a href="/Vicove/Mrusni" class="list-group-item list-group-item-action active">Мръсни</a>
+                        <a href="/Vicove/Policai" class="list-group-item list-group-item-action active">Полицаи</a>
+                        <a href="/Vicove/Piqnici" class="list-group-item list-group-item-action active">Пияници</a>
+                        <a href="/Vicove/CherenHumor" class="list-group-item list-group-item-action active">Черен хумор</a>
+                    </div>
+
+                    <div class="col-md-8" style="background-color: lightgray; color: dimgray; font-family: 'Malgun Gothic'">
+                        @this.RenderBody()
+                    </div>
+
+                    <div class="container-md-2">
+                        <h1> reklami</h1>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted text-dark" style="background-color: chocolate;">
+        <div class="container">
+            &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @this.RenderSection("Scripts", required: false)
+</body>
+</html>
