@@ -16,13 +16,10 @@
         <label asp-for="VicType">Категория вицове</label>
         <select asp-for="VicType" class="form-control" asp-items="@Html.GetEnumSelectList<VicType>()"> <option value="0">Моля изберете</option></select>
 
-        @*(@<label asp-for="Id">ID</label>
-            <input asp-for="Id" class="form-control"/>*@
-
         <label asp-for="Content">Напиши вица</label>
         <textarea asp-for="Content" class="form-control" rows="5"></textarea>
 
-        <input type="submit" value="Create" class="btn btn-default" />
+        <input type="submit" value="Качи" class="btn btn-default" />
     </form>
 </div>
 

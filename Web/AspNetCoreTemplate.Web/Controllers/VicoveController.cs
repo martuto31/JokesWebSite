@@ -24,9 +24,10 @@
             this.repository = repository;
         }
 
-        public async Task<IActionResult> BlondinkiAsync(int? pageNumber)
+        public async Task<IActionResult> MostPopular(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(10);
+            var vicove = this.vicoveService.GetAllMostPopular<VicoveViewModel>(10);
+
             if (vicove == null)
             {
                 return this.NotFound();
@@ -34,7 +35,38 @@
 
             int pageSize = vicove.Count();
 
-            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, 10);
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
+        }
+
+        public async Task<IActionResult> MostRecent(int? pageNumber)
+        {
+            var vicove = this.vicoveService.GetAllMostRecent<VicoveViewModel>(10);
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
+        }
+
+        public async Task<IActionResult> Blondinki(int? pageNumber)
+        {
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Blondinki, 10);
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
             return this.View(model);
         }
@@ -66,54 +98,164 @@
             return this.RedirectToPage("/Home");
         }
 
-        public IActionResult Mutri()
+        public async Task<IActionResult> Mutri(int? pageNumber)
         {
-            return this.View();
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Mutri, 10);
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
         }
 
-        public IActionResult Ludi()
+        public async Task <IActionResult> Ludi(int? pageNumber)
         {
-            return this.View();
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Ludi, 10);
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
         }
 
-        public IActionResult Zhivotni()
+        public async Task <IActionResult> Zhivotni(int? pageNumber)
         {
-            return this.View();
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Zhivotni, 10);
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
         }
 
-        public IActionResult BaiGanio()
+        public async Task<IActionResult> BaiGanio(int? pageNumber)
         {
-            return this.View();
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.BaiGanio, 10);
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
         }
 
-        public IActionResult IvanchoIMariika()
+        public async Task<IActionResult> IvanchoIMariika(int? pageNumber)
         {
-            return this.View();
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.IvanchoIMariika, 10);
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
         }
 
-        public IActionResult Laforizmi()
+        public async Task<IActionResult> Laforizmi(int? pageNumber)
         {
-            return this.View();
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Laforizmi, 10);
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
         }
 
-        public IActionResult Mrusni()
+        public async Task<IActionResult> Mrusni(int? pageNumber)
         {
-            return this.View();
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Mrusni, 10);
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
         }
 
-        public IActionResult Policai()
+        public async Task<IActionResult> Policai(int? pageNumber)
         {
-            return this.View();
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Policai, 10);
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
         }
 
-        public IActionResult Piqnici()
+        public async Task<IActionResult> Piqnici(int? pageNumber)
         {
-            return this.View();
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Piqnici, 10);
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
         }
 
-        public IActionResult CherenHumor()
+        public async Task<IActionResult> CherenHumor(int? pageNumber)
         {
-            return this.View();
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.CherenHumor, 10);
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = vicove.Count();
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
         }
     }
 }
