@@ -1,6 +1,5 @@
 ﻿namespace AspNetCoreTemplate.Web.Controllers
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -9,7 +8,6 @@
     using AspNetCoreTemplate.Services.Data.Vicovete;
     using AspNetCoreTemplate.Web.Infrastructure;
     using AspNetCoreTemplate.Web.ViewModels.Vicove;
-    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
 
     [Controller]
@@ -24,7 +22,7 @@
             this.repository = repository;
         }
 
-        public async Task<IActionResult> MostPopular(int? pageNumber)
+        public async Task<IActionResult> NaiPopulqrni(int? pageNumber)
         {
             var vicove = this.vicoveService.GetAllMostPopular<VicoveViewModel>(10);
 
@@ -40,7 +38,7 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> MostRecent(int? pageNumber)
+        public async Task<IActionResult> NaiNovi(int? pageNumber)
         {
             var vicove = this.vicoveService.GetAllMostRecent<VicoveViewModel>(10);
 
@@ -114,7 +112,7 @@
             return this.View(model);
         }
 
-        public async Task <IActionResult> Ludi(int? pageNumber)
+        public async Task<IActionResult> Ludi(int? pageNumber)
         {
             var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Ludi, 10);
 

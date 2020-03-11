@@ -1,5 +1,26 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+a.blueBtn {
+    outline-color: black;
+    background-color: dodgerblue;
+    border-color: #90AFC5;
+    border: 1px thin black;
+    color: white;
+}
+
+    a.blueBtn:hover {
+        background-color: #0275d8;
+        color: white;
+    }
+
+a.blueActive {
+    background-color: #0275d8;
+    color: white;
+}
+
+a.navActive {
+    color: gray;
+}
 
 a.navbar-brand {
     white-space: normal;
