@@ -12,6 +12,7 @@
     using AspNetCoreTemplate.Services.Data.Vicovete;
     using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Services.Messaging;
+    using AspNetCoreTemplate.Web.Hubs;
     using AspNetCoreTemplate.Web.ViewModels;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -48,6 +49,7 @@
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddSignalR();
 
             services.AddSingleton(this.configuration);
 
@@ -61,6 +63,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
 
             services.AddTransient<IVicoveService, VicoveSevice>();
+            services.AddTransient<IVicLikeService, VicLikeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -106,6 +109,7 @@
                     {
                         endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                        endpoints.MapHub<VotingHub>("VotingHub");
                         endpoints.MapRazorPages();
                     });
         }

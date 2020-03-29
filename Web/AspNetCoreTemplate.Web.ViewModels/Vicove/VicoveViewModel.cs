@@ -1,5 +1,7 @@
 ﻿namespace AspNetCoreTemplate.Web.ViewModels.Vicove
 {
+    using System.Collections.Generic;
+
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Web.Infrastructure;
@@ -7,6 +9,8 @@
 
     public class VicoveViewModel : IMapFrom<Vicove>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public string Content { get; set; }
 
         public int Points { get; set; }
@@ -14,6 +18,8 @@
         public VicType VicType { get; set; }
 
         public string Creator { get; set; }
+
+        public IEnumerable<VicLike> VicLikes { get; set; } // = new HashSet<VicLike>();
 
         public void CreateMappings(IProfileExpression configuration)
         {

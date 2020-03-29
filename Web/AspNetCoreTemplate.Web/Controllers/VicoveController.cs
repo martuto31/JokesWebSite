@@ -1,14 +1,17 @@
 ﻿namespace AspNetCoreTemplate.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Data.Vicovete;
+    using AspNetCoreTemplate.Web.Hubs;
     using AspNetCoreTemplate.Web.Infrastructure;
     using AspNetCoreTemplate.Web.ViewModels.Vicove;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.SignalR;
 
     [Controller]
     public class VicoveController : BaseController
@@ -88,6 +91,10 @@
             {
                 Content = vicovee.Content,
                 VicType = vicovee.VicType,
+                CreatedOn = DateTime.UtcNow,
+                Creator = vicovee.Creator,
+                DateTime = DateTime.UtcNow,
+                Points = vicovee.Points,
             };
 
             await this.repository.AddAsync(vicove);
@@ -128,7 +135,7 @@
             return this.View(model);
         }
 
-        public async Task <IActionResult> Zhivotni(int? pageNumber)
+        public async Task<IActionResult> Zhivotni(int? pageNumber)
         {
             var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Zhivotni, 10);
 

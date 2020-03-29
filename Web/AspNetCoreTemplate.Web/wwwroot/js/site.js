@@ -1,14 +1,50 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/VotingHub")
+        .build();
 
-// Write your JavaScript code.
+    connection.on('Liked',
+        function (likes, vicId) {
+            console.log("in liked")
+            console.log(likes);
+            var vic = vicId.toString();
+            $("span." + vic).html(likes.toString())
+            $("p." + vicId).html("Успешно гласувахте за вица!");
+        });
 
-    $(document).ready(function () {
-        $("a.blueActive").removeClass("blueActive");
-        $('a.blueBtn[href="' + location.pathname + '"]').addClass("blueActive");
+    connection.start().then(function () {
+        console.log("connected");
     });
 
-    $(document).ready(function () {
-        $("a.navActive").removeClass("navActive");
-        $('a.nav-link').addClass("navActive");
+$(".like-button").click(function () {
+        var VicId = $(this).data("id");
+        console.log(parseInt(VicId));
+        connection.invoke("Like", parseInt(VicId)).catch(function (err) {
+            return console.error(err.toString());
+        });
     });
+
+    //e.preventDefault();
+
+//$(function () {
+
+//    if ($(".like-button").size() > 0) {
+//        var vicClient = $.connection.VotingHub;
+
+//        vicClient.on('Liked',
+//            function (vicPoints, vicId) {
+//            var counter = $(".like-count");
+//                $(counter).fadeOut(function (vicPoints, vicId) {
+//                    $(this).text(vicPoints);
+//                    $(this).fadeIn();
+//                });
+//        });
+
+//        $(".like-button").on("click", function () {
+//            var code = $(this).attr("data-id");
+//            vicClient.server.like(code);
+//        });
+
+//        $.connection.hub.start();
+//    }
+
+//});

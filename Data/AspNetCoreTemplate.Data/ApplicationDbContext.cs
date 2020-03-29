@@ -28,6 +28,8 @@
 
         public DbSet<Vicove> Vicoves { get; set; }
 
+        public DbSet<VicLike> VicLikes { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -76,6 +78,12 @@
             }
 
             builder.Entity<Vicove>().ToTable("Vicoves");
+
+            builder
+                .Entity<VicLike>()
+                .HasOne(vl => vl.Vic)
+                .WithMany(v => v.VicLikes)
+                .HasForeignKey(vl => vl.VicId);
         }
 
         private static void ConfigureUserIdentityRelations(ModelBuilder builder)

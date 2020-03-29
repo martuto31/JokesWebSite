@@ -13,9 +13,12 @@
                 <p>
                     @vic.Content
                 </p>
-                <form>
-                    <span class="far fa-thumbs-up active" ></span>
-                </form>
+                <button data-id="@vic.Id" type="button" class="like-button">
+                    <i class="fa fa fa-thumbs-up"></i> Харесвания
+                    |
+                    <span class="@vic.Id">@vic.Points</span>
+                </button>
+                <p class="@vic.Id"></p>
             </li>
         }
     </ul>
@@ -45,11 +48,6 @@
         </ul>
     </nav>
 </div>
-
-<script>
-    $("a").click(function () {
-        $("a").addClass("active");
-    })
-
-    })
-</script>
+<script src="~/lib/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/js/site.js"></script>
+<script serc="/signalr/hubs"></script>

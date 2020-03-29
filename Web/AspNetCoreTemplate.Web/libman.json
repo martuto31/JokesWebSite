@@ -10,6 +10,7 @@
         "dist/jquery.js"
       ]
     },
+
     {
       "library": "bootstrap@4.4.1",
       "destination": "wwwroot/lib/bootstrap/",
@@ -20,6 +21,7 @@
         "dist/js/bootstrap.min.js"
       ]
     },
+
     {
       "library": "jquery-validation@1.19.1",
       "destination": "wwwroot/lib/jquery-validation/",
@@ -28,12 +30,21 @@
         "dist/jquery.validate.min.js"
       ]
     },
+
     {
       "library": "jquery-validation-unobtrusive@3.2.11",
       "destination": "wwwroot/lib/jquery-validation-unobtrusive/",
       "files": [
         "dist/jquery.validate.unobtrusive.js",
         "dist/jquery.validate.unobtrusive.min.js"
+      ]
+    },
+
+    {
+      "library": "@aspnet/signalr@1.1.4",
+      "destination": "wwwroot/lib/signalr/",
+      "files": [
+        "dist/browser/signalr.min.js"
       ]
     }
   ]
