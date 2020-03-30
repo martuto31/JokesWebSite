@@ -171,6 +171,38 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("Settings");
                 });
 
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.VicForReview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(300)")
+                        .HasMaxLength(300);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Creator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("VicType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VicoveForReview");
+                });
+
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.VicLike", b =>
                 {
                     b.Property<int>("Id")
@@ -187,8 +219,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<bool>("UserLike")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("VicId")
-                        .IsRequired()
+                    b.Property<int>("VicId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -222,7 +253,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Points")
+                    b.Property<int?>("Points")
                         .HasColumnType("int");
 
                     b.Property<int>("VicType")

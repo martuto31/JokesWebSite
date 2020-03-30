@@ -1,5 +1,6 @@
 ﻿namespace AspNetCoreTemplate.Web.ViewModels.Vicove
 {
+    using System;
     using System.Collections.Generic;
 
     using AspNetCoreTemplate.Data.Models;
@@ -18,6 +19,8 @@
         public VicType VicType { get; set; }
 
         public string Creator { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public IEnumerable<VicLike> VicLikes { get; set; } // = new HashSet<VicLike>();
 

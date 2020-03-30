@@ -28,7 +28,7 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse" id="navbarNav">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1 mr-auto mt-2 mt-lg-0" >
+                    <ul class="navbar-nav flex-grow-1 mr-auto mt-2 mt-lg-0">
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Начална страница</a>
                         </li>
@@ -40,6 +40,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Vicove" asp-action="Create">Качи виц</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="VicReview" asp-action="ShowAllForReview">Удобрение</a>
                         </li>
                         @*<li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>

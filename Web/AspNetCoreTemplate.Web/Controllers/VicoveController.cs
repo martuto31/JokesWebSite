@@ -1,28 +1,31 @@
 ﻿namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
-    using System.Linq;
     using System.Threading.Tasks;
 
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Data.Vicovete;
-    using AspNetCoreTemplate.Web.Hubs;
     using AspNetCoreTemplate.Web.Infrastructure;
     using AspNetCoreTemplate.Web.ViewModels.Vicove;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.SignalR;
 
     [Controller]
     public class VicoveController : BaseController
     {
         private readonly IVicoveService vicoveService;
-        private readonly IRepository<Vicove> repository;
+        private readonly IRepository<VicForReview> vicReviewRepository;
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public VicoveController(IVicoveService vicoveService, IRepository<Vicove> repository)
+        public VicoveController(IVicoveService vicoveService, IRepository<VicForReview> vicReviewRepository, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             this.vicoveService = vicoveService;
-            this.repository = repository;
+            this.vicReviewRepository = vicReviewRepository;
+            this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
         public async Task<IActionResult> NaiPopulqrni(int? pageNumber)
@@ -74,31 +77,39 @@
 
         public IActionResult Create()
         {
-            var model = new VicoveViewModel();
+            var model = new VicReviewViewModel();
             return this.View(model);
         }
 
         // [AutoValidateAntiforgeryToken]
+        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(VicoveViewModel vicovee)
+        public async Task<IActionResult> CreateAsync(VicReviewViewModel vicovee)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.View(vicovee);
             }
 
-            var vicove = new Vicove()
+            var result = await this.roleManager.CreateAsync(new IdentityRole
+            {
+                Name = "Admin",
+            });
+
+            var user = await this.userManager.GetUserAsync(this.User);
+            await this.userManager.AddToRoleAsync(user, "Admin");
+
+            var vicove = new VicForReview()
             {
                 Content = vicovee.Content,
                 VicType = vicovee.VicType,
                 CreatedOn = DateTime.UtcNow,
-                Creator = vicovee.Creator,
+                Creator = this.User.Identity.Name,
                 DateTime = DateTime.UtcNow,
-                Points = vicovee.Points,
             };
 
-            await this.repository.AddAsync(vicove);
-            await this.repository.SaveChangesAsync();
+            await this.vicReviewRepository.AddAsync(vicove);
+            await this.vicReviewRepository.SaveChangesAsync();
 
             return this.RedirectToPage("/Home");
         }

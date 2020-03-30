@@ -1,12 +1,8 @@
 ﻿namespace AspNetCoreTemplate.Services.Data.Vicovete
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Web.Infrastructure;
 
     public interface IVicoveService
     {
