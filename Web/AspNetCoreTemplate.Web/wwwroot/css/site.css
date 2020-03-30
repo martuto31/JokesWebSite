@@ -18,6 +18,11 @@ a.blueActive {
     color: white;
 }
 
+a.bluePaginationActive {
+    background-color: white;
+    color: #0275d8;
+}
+
 a.navActive {
     color: gray;
 }

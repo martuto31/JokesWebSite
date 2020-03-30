@@ -27,14 +27,14 @@
 
         public async Task<IActionResult> NaiPopulqrni(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetAllMostPopular<VicoveViewModel>(10);
+            var vicove = this.vicoveService.GetAllMostPopular<VicoveViewModel>();
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -43,14 +43,14 @@
 
         public async Task<IActionResult> NaiNovi(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetAllMostRecent<VicoveViewModel>(10);
+            var vicove = this.vicoveService.GetAllMostRecent<VicoveViewModel>();
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -59,13 +59,13 @@
 
         public async Task<IActionResult> Blondinki(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Blondinki, 10);
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Blondinki);
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -105,14 +105,14 @@
 
         public async Task<IActionResult> Mutri(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Mutri, 10);
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Mutri);
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -121,14 +121,14 @@
 
         public async Task<IActionResult> Ludi(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Ludi, 10);
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Ludi);
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -137,14 +137,14 @@
 
         public async Task<IActionResult> Zhivotni(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Zhivotni, 10);
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Zhivotni);
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -153,14 +153,14 @@
 
         public async Task<IActionResult> BaiGanio(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.BaiGanio, 10);
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.BaiGanio);
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -169,14 +169,14 @@
 
         public async Task<IActionResult> IvanchoIMariika(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.IvanchoIMariika, 10);
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.IvanchoIMariika);
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -185,14 +185,14 @@
 
         public async Task<IActionResult> Laforizmi(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Laforizmi, 10);
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Laforizmi);
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -201,14 +201,14 @@
 
         public async Task<IActionResult> Mrusni(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Mrusni, 10);
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Mrusni);
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -217,14 +217,14 @@
 
         public async Task<IActionResult> Policai(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Policai, 10);
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Policai);
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -233,14 +233,14 @@
 
         public async Task<IActionResult> Piqnici(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Piqnici, 10);
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Piqnici);
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 
@@ -249,14 +249,14 @@
 
         public async Task<IActionResult> CherenHumor(int? pageNumber)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.CherenHumor, 10);
+            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.CherenHumor);
 
             if (vicove == null)
             {
                 return this.NotFound();
             }
 
-            int pageSize = vicove.Count();
+            int pageSize = 10;
 
             var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
 

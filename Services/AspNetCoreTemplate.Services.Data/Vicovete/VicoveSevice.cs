@@ -20,65 +20,59 @@
 
         public IRepository<Vicove> VicoveRepository { get; set; }
 
-        public IQueryable<TViewModel> GetLatestVicove<TViewModel>(VicType vicType, int count = 10)
+        public IQueryable<TViewModel> GetLatestVicove<TViewModel>(VicType vicType)
         {
             var vicove = this.vicoveRepository.All()
                 .Where(x => x.VicType == vicType)
                 .OrderBy(x => x.CreatedOn)
-                .Take(count)
                 .To<TViewModel>();
 
             return vicove;
         }
 
-        public IQueryable<TViewModel> GetNewestVicove<TViewModel>(VicType vicType, int count = 10)
+        public IQueryable<TViewModel> GetNewestVicove<TViewModel>(VicType vicType)
         {
             var vicove = this.vicoveRepository.All()
                 .Where(x => x.VicType == vicType)
                 .OrderByDescending(x => x.CreatedOn)
-                .Take(count)
                 .To<TViewModel>();
 
             return vicove;
         }
 
-        public IQueryable<TViewModel> GetByMostPoints<TViewModel>(VicType vicType, int count = 10)
+        public IQueryable<TViewModel> GetByMostPoints<TViewModel>(VicType vicType)
         {
             var vicove = this.vicoveRepository.All()
                 .Where(x => x.VicType == vicType)
                 .OrderByDescending(x => x.Points)
-                .Take(count)
                 .To<TViewModel>();
 
             return vicove;
         }
 
-        public IQueryable<TViewModel> GetByLowestPoints<TViewModel>(VicType vicType, int count = 10)
+        public IQueryable<TViewModel> GetByLowestPoints<TViewModel>(VicType vicType)
         {
             var vicove = this.vicoveRepository.All()
                 .Where(x => x.VicType == vicType)
                 .OrderBy(x => x.Points)
-                .Take(count)
                 .To<TViewModel>();
 
             return vicove;
         }
 
-        public IQueryable<TViewModel> GetAllMostPopular<TViewModel>(int count = 10)
+        public IQueryable<TViewModel> GetAllMostPopular<TViewModel>()
         {
             var vicove = this.vicoveRepository.All()
                 .OrderByDescending(x => x.Points)
-                .Take(count)
                 .To<TViewModel>();
 
             return vicove;
         }
 
-        public IQueryable<TViewModel> GetAllMostRecent<TViewModel>(int count = 10)
+        public IQueryable<TViewModel> GetAllMostRecent<TViewModel>()
         {
             var vicove = this.vicoveRepository.All()
                 .OrderBy(x => x.CreatedOn)
-                .Take(count)
                 .To<TViewModel>();
 
             return vicove;

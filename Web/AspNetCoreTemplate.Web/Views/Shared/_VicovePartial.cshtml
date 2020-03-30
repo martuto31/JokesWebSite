@@ -27,7 +27,7 @@
         <ul class="pagination justify-content-center">
             @if (Model.GetHasPreviousPage)
             {
-                <li class="page-item active"><a class="page-link" asp-route-pageNumber="@(Model.PageIndex - 1)">Предишна</a></li>
+                <li class="page-item"><a class="page-link bluePaginationActive" asp-route-pageNumber="@(Model.PageIndex - 1)">Предишна</a></li>
             }
             else
             {
@@ -35,11 +35,18 @@
             }
             @for (int i = 1; i <= Model.TotalPages; i++)
             {
-                <li class="page-item active"><a class="page-link" asp-route-pageNumber="@i">@i</a></li>
+                if (Model.PageIndex == i)
+                {
+                    <li class="page-item active"><a class="page-link" asp-route-pageNumber="@i">@i</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" asp-route-pageNumber="@i">@i</a></li>
+                }
             }
             @if (Model.HasNextPage)
             {
-                <li class="page-item active"><a class="page-link" asp-route-pageNumber="@(Model.PageIndex + 1)">Следваща</a></li>
+                <li class="page-item"><a class="page-link bluePaginationActive" asp-route-pageNumber="@(Model.PageIndex + 1)">Следваща</a></li>
             }
             else
             {
