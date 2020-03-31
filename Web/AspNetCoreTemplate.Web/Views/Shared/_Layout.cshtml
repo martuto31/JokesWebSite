@@ -1,4 +1,7 @@
-﻿@using AspNetCoreTemplate.Common
+﻿@using Microsoft.AspNetCore.Identity
+@using AspNetCoreTemplate.Data.Models
+@using AspNetCoreTemplate.Common
+@inject SignInManager<ApplicationUser> signInManager
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,9 +44,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Vicove" asp-action="Create">Качи виц</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="VicReview" asp-action="ShowAllForReview">Удобрение</a>
-                        </li>
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="VicReview" asp-action="ShowAllForReview">Удобрение</a>
+                            </li>
+                        }
                         @*<li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
         </li>
@@ -61,8 +67,8 @@
         <main role="main" class="pb-3">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="list-group-horizontal-md-2"  style="font-family:cursive">
-                        <a href="/Vicove/Blondinki" class="list-group-item list-group-item-action blueBtn" >Блондинки</a>
+                    <div class="list-group-horizontal-md-2" style="font-family:cursive">
+                        <a href="/Vicove/Blondinki" class="list-group-item list-group-item-action blueBtn">Блондинки</a>
                         <a href="/Vicove/BaiGanio" class="list-group-item list-group-item-action blueBtn">Бай Ганьо</a>
                         <a href="/Vicove/Zhivotni" class="list-group-item list-group-item-action blueBtn">Животни</a>
                         <a href="/Vicove/IvanchoIMariika" class="list-group-item list-group-item-action blueBtn">Иванчо и Марийка</a>

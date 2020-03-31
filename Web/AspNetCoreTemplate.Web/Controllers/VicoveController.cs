@@ -17,10 +17,10 @@
     {
         private readonly IVicoveService vicoveService;
         private readonly IRepository<VicForReview> vicReviewRepository;
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly RoleManager<ApplicationRole> roleManager;
 
-        public VicoveController(IVicoveService vicoveService, IRepository<VicForReview> vicReviewRepository, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public VicoveController(IVicoveService vicoveService, IRepository<VicForReview> vicReviewRepository, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
         {
             this.vicoveService = vicoveService;
             this.vicReviewRepository = vicReviewRepository;
@@ -91,13 +91,13 @@
                 return this.View(vicovee);
             }
 
-            var result = await this.roleManager.CreateAsync(new IdentityRole
-            {
-                Name = "Admin",
-            });
+            //var result = await this.roleManager.CreateAsync(new ApplicationRole
+            //{
+            //    Name = "Admin",
+            //});
 
-            var user = await this.userManager.GetUserAsync(this.User);
-            await this.userManager.AddToRoleAsync(user, "Admin");
+            //var user = await this.userManager.GetUserAsync(this.User);
+            //await this.userManager.AddToRoleAsync(user, "Admin");
 
             var vicove = new VicForReview()
             {

@@ -1,5 +1,5 @@
 ﻿    var connection = new signalR.HubConnectionBuilder()
-        .withUrl("/VotingHub")
+        .withUrl("/MainHub")
         .build();
 
     connection.on('Liked',
@@ -11,6 +11,17 @@
             $("p." + vicId).html("Успешно гласувахте за вица!");
         });
 
+    connection.on('Upload',
+        function (vicId) {
+            $("li." + vicId).html("Успешно качихте вица!");
+        });
+
+    connection.on('Delete',
+        function (vicId) {
+            $("li." + vicId).html("Успешно изтрихте вица!");
+        });
+
+
     connection.start().then(function () {
         console.log("connected");
     });
@@ -21,7 +32,22 @@ $(".like-button").click(function () {
         connection.invoke("Like", parseInt(VicId)).catch(function (err) {
             return console.error(err.toString());
         });
+});
+
+$(".upload").click(function () {
+    var VicId = $(this).data("id");
+    connection.invoke("UploadVic", parseInt(VicId)).catch(function (err) {
+        return console.error(err.toString());
     });
+});
+
+$(".delete").click(function () {
+    var VicId = $(this).data("id");
+    connection.invoke("DeleteVic", parseInt(VicId)).catch(function (err) {
+        return console.error(err.toString());
+    });
+});
+
 
     //e.preventDefault();
 
