@@ -2,7 +2,7 @@
 {
     public static class GlobalConstants
     {
-        public const string SystemName = "AspNetCoreTemplate";
+        public const string SystemName = "ВицовеБГ";
 
         public const string AdministratorRoleName = "Administrator";
     }

@@ -1,4 +1,10 @@
-﻿    var connection = new signalR.HubConnectionBuilder()
+﻿$(document).ready(function () {
+        $("a.blueActive").removeClass("blueActive");
+        $('a.blueBtn[href="' + location.pathname + '"]').addClass("blueActive");
+    });
+
+
+var connection = new signalR.HubConnectionBuilder()
         .withUrl("/MainHub")
         .build();
 

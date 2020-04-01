@@ -9,12 +9,12 @@
     <ul class="list-group list-group-flush" style="background-color: lightblue">
         @foreach (var vic in Model)
         {
-            <li class="list-group-item" style="background-color: lightcyan">
+            <li class="list-group-item list-group-item-primary"> @*style="background-color: lightcyan"*@
                 <p>
                     @vic.Content
                 </p>
                 <button data-id="@vic.Id" type="button" class="like-button">
-                    <i class="fa fa fa-thumbs-up"></i> Харесвания
+                    <i class="fa fa fa-thumbs-up"></i>
                     |
                     <span class="@vic.Id">@vic.Points</span>
                 </button>
