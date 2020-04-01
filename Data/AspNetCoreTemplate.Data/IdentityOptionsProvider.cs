@@ -1,6 +1,7 @@
 ﻿namespace AspNetCoreTemplate.Data
 {
     using Microsoft.AspNetCore.Identity;
+    using System;
 
     public static class IdentityOptionsProvider
     {
@@ -11,6 +12,13 @@
             options.Password.RequireUppercase = false;
             options.Password.RequireNonAlphanumeric = false;
             options.Password.RequiredLength = 6;
+
+            options.User.RequireUniqueEmail = true;
+            options.User.AllowedUserNameCharacters =
+"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            options.Lockout.MaxFailedAccessAttempts = 5;
         }
     }
 }

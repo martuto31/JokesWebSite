@@ -1,9 +1,13 @@
-﻿@using AspNetCoreTemplate.Common
+﻿@using AspNetCoreTemplate.Data.Models
+@model VicNaDenq
 @{
     this.ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Най-новите и най-забавните вицове в интернет!</h1>
+<h2>Най-новите и популярни вицове!</h2>
+
+<div>
+    <span>Виц на деня</span>
+    <p>@Model.Content</p>
 </div>

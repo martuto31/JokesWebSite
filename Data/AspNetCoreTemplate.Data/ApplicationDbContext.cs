@@ -34,6 +34,8 @@
 
         public DbSet<Leaderboard> Leaderboards { get; set; }
 
+        public DbSet<VicNaDenq> VicoveNaDenq { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

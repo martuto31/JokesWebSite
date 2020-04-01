@@ -17,6 +17,8 @@
 
         IQueryable<TViewModel> GetAllMostPopular<TViewModel>();
 
-        public IQueryable<TViewModel> GetAllMostRecent<TViewModel>();
+        IQueryable<TViewModel> GetAllMostRecent<TViewModel>();
+
+        VicNaDenq VicNaDenq();
     }
 }

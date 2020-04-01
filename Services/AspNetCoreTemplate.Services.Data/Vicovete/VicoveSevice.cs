@@ -12,10 +12,12 @@
     public class VicoveSevice : IVicoveService
     {
         private readonly IRepository<Vicove> vicoveRepository;
+        private readonly IRepository<VicNaDenq> dailyVicRepository;
 
-        public VicoveSevice(IRepository<Vicove> vicoveRepository)
+        public VicoveSevice(IRepository<Vicove> vicoveRepository, IRepository<VicNaDenq> dailyVicRepository)
         {
             this.vicoveRepository = vicoveRepository;
+            this.dailyVicRepository = dailyVicRepository;
         }
 
         public IRepository<Vicove> VicoveRepository { get; set; }
@@ -76,6 +78,14 @@
                 .To<TViewModel>();
 
             return vicove;
+        }
+
+        public VicNaDenq VicNaDenq()
+        {
+            var vic = this.dailyVicRepository.All()
+                .FirstOrDefault(x => x.Day == DateTime.Today);
+
+            return vic;
         }
     }
 }
