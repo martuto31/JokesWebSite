@@ -82,19 +82,7 @@
         <main role="main" class="pb-3">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="list-group-horizontal-md-2" style="font-family:cursive">
-                        <a href="/Vicove/Blondinki" class="list-group-item list-group-item-action blueBtn">Блондинки</a>
-                        <a href="/Vicove/BaiGanio" class="list-group-item list-group-item-action blueBtn">Бай Ганьо</a>
-                        <a href="/Vicove/Zhivotni" class="list-group-item list-group-item-action blueBtn">Животни</a>
-                        <a href="/Vicove/IvanchoIMariika" class="list-group-item list-group-item-action blueBtn">Иванчо и Марийка</a>
-                        <a href="/Vicove/Ludi" class="list-group-item list-group-item-action blueBtn">Луди</a>
-                        <a href="/Vicove/Laforizmi" class="list-group-item list-group-item-action blueBtn">Лафоризми</a>
-                        <a href="/Vicove/Mutri" class="list-group-item list-group-item-action blueBtn">Мутри</a>
-                        <a href="/Vicove/Mrusni" class="list-group-item list-group-item-action blueBtn">Мръсни</a>
-                        <a href="/Vicove/Policai" class="list-group-item list-group-item-action blueBtn">Полицаи</a>
-                        <a href="/Vicove/Piqnici" class="list-group-item list-group-item-action blueBtn">Пияници</a>
-                        <a href="/Vicove/CherenHumor" class="list-group-item list-group-item-action blueBtn">Черен хумор</a>
-                    </div>
+                    <partial name="_VicCategoryPartial" />
 
                     <div class="col-md-8" style="background-color: lightgray; color: #2A3132; font-family: 'Malgun Gothic'">
                         @this.RenderBody()
