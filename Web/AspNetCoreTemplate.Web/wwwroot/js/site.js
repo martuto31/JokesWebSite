@@ -9,12 +9,30 @@ var connection = new signalR.HubConnectionBuilder()
         .build();
 
     connection.on('Liked',
-        function (likes, vicId) {
+        function (likes, vicId, check, evt) {
             console.log("in liked")
             console.log(likes);
             var vic = vicId.toString();
             $("span." + vic).html(likes.toString())
-            $("p." + vicId).html("Успешно гласувахте за вица!");
+            if (check) {
+                $("p." + vicId).html("Благодаря за харесването!");
+                setTimeout(function () {
+                    $("p." + vicId).fadeIn(400);
+                    $("p." + vicId).fadeOut(2500);
+                });
+                $("i." + vicId).removeClass("far fa-thumbs-up");
+                $("i." + vicId).addClass("fas fa-thumbs-up");
+                $("button." + vicId).removeClass("likeButton");
+                $("button." + vicId).addClass("likedButton");
+                evt.preventDefault();
+            }
+            else if (!check) {
+                $("i." + vicId).removeClass("fas fa-thumbs-up");
+                $("i." + vicId).addClass("far fa-thumbs-up");
+                $("button." + vicId).removeClass("likedButton");
+                $("button." + vicId).addClass("likeButton");
+                evt.preventDefault();
+            }
         });
 
     connection.on('Upload',

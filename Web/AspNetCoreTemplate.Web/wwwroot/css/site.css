@@ -23,6 +23,64 @@ a.bluePaginationActive {
     color: #0275d8;
 }
 
+.BackgroundBlueGradient {
+    background-image: linear-gradient(to bottom, #50c9c3, #96deda);
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+    .sticky + .content {
+        padding-top: 60px;
+    }
+
+.navyBorder {
+    border: 2px solid #294972;
+}
+
+.table-bordered {
+    border: 2px solid #294972;
+    border-bottom: 2px solid #294972;
+    border-top: 2px solid #294972;
+}
+
+.navyBorder {
+    border: 2px solid #294972;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.likeButton {
+    background-color: lightblue;
+    font-size: 15px;
+    font: bold 12 px;
+    font-family: 'Comic Sans MS';
+    border: 1px thin #294972;
+    border-color: #294972;
+}
+    .likeButton:hover {
+        background-color: skyblue;
+    }
+
+.likedButton {
+    background-color: lightblue;
+    font-size: 15px;
+    font: bold 12 px;
+    font-family: 'Comic Sans MS';
+    color: #294972;
+    border: 1px thin #294972;
+    border-color: #294972;
+}
+
+.likedButton:hover {
+    background-color: skyblue;
+}
+
 a.navActive {
     color: gray;
 }
