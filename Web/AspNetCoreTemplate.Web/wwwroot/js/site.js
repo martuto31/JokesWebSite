@@ -9,9 +9,9 @@ var connection = new signalR.HubConnectionBuilder()
         .build();
 
     connection.on('Liked',
-        function (likes, vicId, check, evt) {
+        function (likes, vicId, check) {
             console.log("in liked")
-            console.log(likes);
+            console.log(check);
             var vic = vicId.toString();
             $("span." + vic).html(likes.toString())
             if (check) {
@@ -20,18 +20,18 @@ var connection = new signalR.HubConnectionBuilder()
                     $("p." + vicId).fadeIn(400);
                     $("p." + vicId).fadeOut(2500);
                 });
-                $("i." + vicId).removeClass("far fa-thumbs-up");
+                if ($("i." + vicId).hasClass("far fa-thumbs-up")) {
+                    console.log("yes");
+                    $("i." + vicId).removeClass("far fa-thumbs-up");
+                };
                 $("i." + vicId).addClass("fas fa-thumbs-up");
-                $("button." + vicId).removeClass("likeButton");
-                $("button." + vicId).addClass("likedButton");
-                evt.preventDefault();
             }
             else if (!check) {
-                $("i." + vicId).removeClass("fas fa-thumbs-up");
+                if($("i." + vicId).hasClass("fas fa-thumbs-up")) {
+                    console.log("yes");
+                    $("i." + vicId).removeClass("fas fa-thumbs-up");
+                };
                 $("i." + vicId).addClass("far fa-thumbs-up");
-                $("button." + vicId).removeClass("likedButton");
-                $("button." + vicId).addClass("likeButton");
-                evt.preventDefault();
             }
         });
 
