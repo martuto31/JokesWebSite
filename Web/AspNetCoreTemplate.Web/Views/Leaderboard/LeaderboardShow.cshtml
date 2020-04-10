@@ -1,0 +1,31 @@
+﻿@using AspNetCoreTemplate.Web.ViewModels.Leaderboard
+@using AspNetCoreTemplate.Web.Infrastructure
+@using AspNetCoreTemplate.Services.Data.Vicovete
+@model PaginatedList<LeaderboardViewModel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_LayoutWithoutVicCategories.cshtml";
+}
+    <div>
+           <table class="table table-hover table-bordered">
+               <thead style="background-color: #294972; color: white; font: bolder 17px verdana">
+                   <tr class="navyBorder" style="border-bottom: #294972">
+                       <th style="border: #294972" scope="col">Място</th>
+                       <th style="border: #294972" scope="col">Име</th>
+                       <th style="border: #294972" scope="col">Точки</th>
+                   </tr>
+               </thead>
+               <tbody class="navyBorder" style="border: #294972">
+                   @foreach (var user in Model)
+                   {
+                       <tr class="navyBorder" style="border: #294972">
+                           <th style="border: #294972" scope="row">@user.Id</th>
+                           <td style="border: #294972">@user.UserName</td>
+                           <td style="border: #294972">@user.Points</td>
+                       </tr>
+                   }
+               </tbody>
+           </table>
+    </div>

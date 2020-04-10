@@ -10,6 +10,7 @@
     using AspNetCoreTemplate.Data.Seeding;
     using AspNetCoreTemplate.Services.Data;
     using AspNetCoreTemplate.Services.Data.Leaderboard;
+    using AspNetCoreTemplate.Services.Data.SelectVOD;
     using AspNetCoreTemplate.Services.Data.Vicovete;
     using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Services.Messaging;
@@ -66,7 +67,8 @@
             services.AddTransient<IVicoveService, VicoveSevice>();
             services.AddTransient<IVicLikeService, VicLikeService>();
             services.AddTransient<IVicForUploadService, VicForUploadService>();
-            services.AddTransient<ILeaderboardService, LeaderboardService>(); 
+            services.AddTransient<ILeaderboardService, LeaderboardService>();
+            services.AddTransient<ISelectVOD, SelectVOD>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -112,6 +114,7 @@
                     {
                         endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                        endpoints.MapControllerRoute("dailyVic", "{controller=Home}/{action=AddToDaily}/{id?}");
                         endpoints.MapHub<MainHub>("MainHub");
                         endpoints.MapRazorPages();
                     });

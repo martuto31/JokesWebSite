@@ -1,0 +1,24 @@
+﻿@using AspNetCoreTemplate.Data.Models
+@using AspNetCoreTemplate.Web.ViewModels
+@model VicNaDenqViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_LayoutWithoutVicCategories.cshtml";
+}
+
+<div>
+    <form asp-controller="Home" asp-action="Create" method="post">
+
+        <div asp-validation-summary="All"></div>
+
+        <label asp-for="VicType">Категория вицове</label>
+        <select asp-for="VicType" class="form-control" asp-items="@Html.GetEnumSelectList<VicType>()"> <option value="0">Моля изберете</option></select>
+
+        <label asp-for="Content">Напиши вица</label>
+        <textarea asp-for="Content" class="form-control" rows="5"></textarea>
+
+        <input type="submit" value="Качи" class="btn btn-default" />
+    </form>
+</div>

@@ -36,6 +36,10 @@
 
         public DbSet<VicNaDenq> VicoveNaDenq { get; set; }
 
+        public DbSet<Badges> Badges { get; set; }
+
+        public DbSet<Account> Accounts { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -90,6 +94,18 @@
                 .HasOne(vl => vl.Vic)
                 .WithMany(v => v.VicLikes)
                 .HasForeignKey(vl => vl.VicId);
+
+            builder
+                .Entity<Vicove>()
+                .HasOne(a => a.Account)
+                .WithMany(v => v.Vicove)
+                .HasForeignKey(a => a.AccountID);
+
+            builder
+                .Entity<Badges>()
+                .HasOne(a => a.Account)
+                .WithMany(b => b.Badges)
+                .HasForeignKey(a => a.AccountId);
         }
 
         private static void ConfigureUserIdentityRelations(ModelBuilder builder)
@@ -114,6 +130,10 @@
                 .HasForeignKey(e => e.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Account>()
+                .HasIndex(a => a.User)
+                .IsUnique();
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

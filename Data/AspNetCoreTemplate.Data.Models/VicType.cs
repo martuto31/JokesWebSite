@@ -6,7 +6,7 @@
     public enum VicType
     {
         [Display(Name = "Бай Ганьо")]
-        BaiGanio,
+        BaiGanio = 1,
 
         [Display(Name = "Блондинки")]
         Blondinki = 2,

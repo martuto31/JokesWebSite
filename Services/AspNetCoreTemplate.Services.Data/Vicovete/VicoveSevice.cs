@@ -74,7 +74,7 @@
         public IQueryable<TViewModel> GetAllMostRecent<TViewModel>()
         {
             var vicove = this.vicoveRepository.All()
-                .OrderBy(x => x.CreatedOn)
+                .OrderByDescending(x => x.CreatedOn)
                 .To<TViewModel>();
 
             return vicove;

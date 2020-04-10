@@ -11,6 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200403131933_AccountBadgesAndAccountVicoveToDb.cs" />
+    <Compile Remove="Migrations\20200403131933_AccountBadgesAndAccountVicoveToDb.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
 

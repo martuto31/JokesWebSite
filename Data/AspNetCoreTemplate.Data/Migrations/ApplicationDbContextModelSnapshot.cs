@@ -19,6 +19,40 @@ namespace AspNetCoreTemplate.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Account", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AllPoints")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LastOnline")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UploadedVicove")
+                        .HasColumnType("int");
+
+                    b.Property<string>("User")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("User")
+                        .IsUnique()
+                        .HasFilter("[User] IS NOT NULL");
+
+                    b.ToTable("Accounts");
+                });
+
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.ApplicationRole", b =>
                 {
                     b.Property<string>("Id")
@@ -139,6 +173,32 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Badges", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BadgeType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("Badges");
+                });
+
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Leaderboard", b =>
                 {
                     b.Property<int>("Id")
@@ -222,6 +282,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("User")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("VicType")
                         .HasColumnType("int");
 
@@ -297,6 +360,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AccountID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(300)")
@@ -321,6 +387,8 @@ namespace AspNetCoreTemplate.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AccountID");
 
                     b.ToTable("Vicoves");
                 });
@@ -429,6 +497,15 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Badges", b =>
+                {
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Account", "Account")
+                        .WithMany("Badges")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.VicLike", b =>
                 {
                     b.HasOne("AspNetCoreTemplate.Data.Models.Vicove", "Vic")
@@ -436,6 +513,13 @@ namespace AspNetCoreTemplate.Data.Migrations
                         .HasForeignKey("VicId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Vicove", b =>
+                {
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Account", "Account")
+                        .WithMany("Vicove")
+                        .HasForeignKey("AccountID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

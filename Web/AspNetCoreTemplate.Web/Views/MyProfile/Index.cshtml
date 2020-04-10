@@ -1,0 +1,46 @@
+﻿@using AspNetCoreTemplate.Web.ViewModels.MyProfile
+@using AspNetCoreTemplate.Data.Models
+@model Account
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_NavOnlyPartial.cshtml";
+}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-3">
+                <div class="list-group-horizontal-md-2" style="font-family:cursive">
+                    <a href="/Vicove/Blondinki" class="list-group-item list-group-item-action blueBtn">Любими вицове</a>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <ul class="list-group list-group-flush" style="background-color: lightblue">
+                    @foreach (var vic in Model.Vicove)
+                    {
+                        <li class="list-group-item list-group-item-primary">
+                            @*style="background-color: lightcyan"*@
+                            <p>
+                                @vic.Content
+                            </p>
+                            <span>@vic.Points</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="container-sm-3">
+                <div>
+                    <img src="~/a.jpg" class="rounded" width="150" height="150" alt="Profile picture" />
+                    <br />
+                    <span>Избери снимка</span>
+                </div>
+                <p class="bg-primary">@Model.User</p>
+                <p class="bg-primary">Всички точки | @Model.AllPoints</p>
+                <p class="bg-primary">Общо качени вицове | @Model.UploadedVicove</p>
+            </div>
+
+        </div>
+    </div>

@@ -81,7 +81,7 @@
             return this.View(model);
         }
 
-        // [AutoValidateAntiforgeryToken]
+        [AutoValidateAntiforgeryToken]
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateAsync(VicReviewViewModel vicovee)
@@ -106,6 +106,7 @@
                 CreatedOn = DateTime.UtcNow,
                 Creator = this.User.Identity.Name,
                 DateTime = DateTime.UtcNow,
+                User = this.User.Identity.Name,
             };
 
             await this.vicReviewRepository.AddAsync(vicove);

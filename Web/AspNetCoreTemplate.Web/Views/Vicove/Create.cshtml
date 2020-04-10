@@ -11,13 +11,15 @@
 <div>
     <form asp-controller="Vicove" asp-action="Create" method="post">
 
-        <div asp-validation-summary="All"></div>
+        @*<div asp-validation-summary="All"></div>*@
 
         <label asp-for="VicType">Категория вицове</label>
-        <select asp-for="VicType" class="form-control" asp-items="@Html.GetEnumSelectList<VicType>()"> <option value="0">Моля изберете</option></select>
-
+        <select asp-for="VicType" class="form-control" asp-items="@Html.GetEnumSelectList<VicType>()"> <option value="0">--Моля изберете--</option></select>
+        <span asp-validation-for="VicType" class="text-danger"></span>
+        <br />
         <label asp-for="Content">Напиши вица</label>
-        <textarea asp-for="Content" class="form-control" rows="5"></textarea>
+        <textarea asp-for="Content" class="form-control" rows="7"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
 
         <input type="submit" value="Изпрати" class="btn btn-default" />
     </form>

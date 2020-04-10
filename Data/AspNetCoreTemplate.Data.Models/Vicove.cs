@@ -25,5 +25,9 @@
         public DateTime DateTime { get; set; } = DateTime.UtcNow;
 
         public ICollection<VicLike> VicLikes { get; set; } = new HashSet<VicLike>(); // ako go mahna
+
+        public int? AccountID { get; set; }
+
+        public Account Account { get; set; }
     }
 }
