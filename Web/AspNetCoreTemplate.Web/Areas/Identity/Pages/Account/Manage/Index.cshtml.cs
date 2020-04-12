@@ -37,6 +37,10 @@
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            public string Username { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)

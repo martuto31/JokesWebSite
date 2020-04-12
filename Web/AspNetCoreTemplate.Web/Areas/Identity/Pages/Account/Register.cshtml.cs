@@ -56,7 +56,7 @@
             public string Email { get; set; }
 
             [Required]
-            [Display(Name ="Потребителско име")]
+            [Display(Name = "Потребителско име")]
             public string Username { get; set; }
 
             [Required]
