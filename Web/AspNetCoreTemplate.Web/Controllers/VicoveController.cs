@@ -1,6 +1,7 @@
 ﻿namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using AspNetCoreTemplate.Data.Common.Repositories;
@@ -27,6 +28,14 @@
             this.userManager = userManager;
             this.roleManager = roleManager;
         }
+
+        public string PointsSort { get; set; }
+
+        public string DateSort { get; set; }
+
+        public string CurrentFilter { get; set; }
+
+        public string CurrentSort { get; set; }
 
         public async Task<IActionResult> NaiPopulqrni(int? pageNumber)
         {
@@ -60,9 +69,27 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> Blondinki(int? pageNumber)
+        public async Task<IActionResult> Blondinki(int? pageNumber, string s)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Blondinki);
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Blondinki);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.Blondinki);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.Blondinki);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.Blondinki);
+                    break;
+            }
+
             if (vicove == null)
             {
                 return this.NotFound();
@@ -115,9 +142,26 @@
             return this.RedirectToPage("/Home");
         }
 
-        public async Task<IActionResult> Mutri(int? pageNumber)
+        public async Task<IActionResult> Mutri(int? pageNumber, string s)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Mutri);
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Mutri);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.Mutri);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.Mutri);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.Mutri);
+                    break;
+            }
 
             if (vicove == null)
             {
@@ -131,9 +175,26 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> Ludi(int? pageNumber)
+        public async Task<IActionResult> Ludi(int? pageNumber, string s)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Ludi);
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Ludi);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.Ludi);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.Ludi);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.Ludi);
+                    break;
+            }
 
             if (vicove == null)
             {
@@ -147,9 +208,26 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> Zhivotni(int? pageNumber)
+        public async Task<IActionResult> Zhivotni(int? pageNumber, string s)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Zhivotni);
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Zhivotni);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.Zhivotni);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.Zhivotni);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.Zhivotni);
+                    break;
+            }
 
             if (vicove == null)
             {
@@ -163,9 +241,26 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> BaiGanio(int? pageNumber)
+        public async Task<IActionResult> BaiGanio(int? pageNumber, string s)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.BaiGanio);
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.BaiGanio);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.BaiGanio);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.BaiGanio);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.BaiGanio);
+                    break;
+            }
 
             if (vicove == null)
             {
@@ -179,9 +274,26 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> IvanchoIMariika(int? pageNumber)
+        public async Task<IActionResult> IvanchoIMariika(int? pageNumber, string s)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.IvanchoIMariika);
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.IvanchoIMariika);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.IvanchoIMariika);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.IvanchoIMariika);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.IvanchoIMariika);
+                    break;
+            }
 
             if (vicove == null)
             {
@@ -195,9 +307,26 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> Laforizmi(int? pageNumber)
+        public async Task<IActionResult> Laforizmi(int? pageNumber, string s)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Laforizmi);
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Laforizmi);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.Laforizmi);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.Laforizmi);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.Laforizmi);
+                    break;
+            }
 
             if (vicove == null)
             {
@@ -211,9 +340,26 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> Mrusni(int? pageNumber)
+        public async Task<IActionResult> Mrusni(int? pageNumber, string s)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Mrusni);
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Mrusni);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.Mrusni);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.Mrusni);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.Mrusni);
+                    break;
+            }
 
             if (vicove == null)
             {
@@ -227,9 +373,26 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> Policai(int? pageNumber)
+        public async Task<IActionResult> Policai(int? pageNumber, string s)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Policai);
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Policai);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.Policai);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.Policai);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.Policai);
+                    break;
+            }
 
             if (vicove == null)
             {
@@ -243,9 +406,26 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> Piqnici(int? pageNumber)
+        public async Task<IActionResult> Piqnici(int? pageNumber, string s)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Piqnici);
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Piqnici);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.Piqnici);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.Piqnici);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.Piqnici);
+                    break;
+            }
 
             if (vicove == null)
             {
@@ -259,9 +439,26 @@
             return this.View(model);
         }
 
-        public async Task<IActionResult> CherenHumor(int? pageNumber)
+        public async Task<IActionResult> CherenHumor(int? pageNumber, string s)
         {
-            var vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.CherenHumor);
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.CherenHumor);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.CherenHumor);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.CherenHumor);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.CherenHumor);
+                    break;
+            }
 
             if (vicove == null)
             {

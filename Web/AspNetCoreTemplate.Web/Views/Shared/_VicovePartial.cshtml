@@ -6,6 +6,20 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 <div>
+    <div class="navbar justify-content-sm-start">
+        <form>
+            <button class="btn sortBtn">Най-нови</button>
+        </form>
+
+        <form asp-route-s="points_desc">
+            <button class="btn sortBtn">Най-харесвани</button>
+        </form>
+
+        <form asp-route-s="date_desc">
+            <button class="btn sortBtn">Най-стари</button>
+        </form>
+
+    </div>
     <ul class="list-group list-group-flush" style="background-color: lightblue">
         @foreach (var vic in Model)
         {

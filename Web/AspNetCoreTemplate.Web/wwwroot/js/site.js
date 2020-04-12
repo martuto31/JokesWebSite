@@ -1,7 +1,12 @@
 ﻿$(document).ready(function () {
         $("a.blueActive").removeClass("blueActive");
         $('a.blueBtn[href="' + location.pathname + '"]').addClass("blueActive");
-    });
+});
+
+$(document).ready(function () {
+    $("button.sortBtnActive").removeClass("sortBtnActive");
+    $('button.sortBtn[href="' + location.pathname + '"]').addClass("sortBtnActive");
+});
 
 
 var connection = new signalR.HubConnectionBuilder()

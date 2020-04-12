@@ -18,6 +18,22 @@ a.blueActive {
     color: white;
 }
 
+.sortBtn {
+    border: 1px inset lightgray;
+    background-color: #a7a9ac;
+    color: black;
+}
+
+    .sortBtn:hover {
+        background-color: dimgray;
+        color: white;
+    }
+
+.sortBtnActive {
+    background-color: dimgray;
+    color: white;
+}
+
 a.bluePaginationActive {
     background-color: white;
     color: #0275d8;
