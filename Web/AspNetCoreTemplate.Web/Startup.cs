@@ -10,6 +10,7 @@
     using AspNetCoreTemplate.Data.Seeding;
     using AspNetCoreTemplate.Services.Data;
     using AspNetCoreTemplate.Services.Data.Leaderboard;
+    using AspNetCoreTemplate.Services.Data.MyProfile;
     using AspNetCoreTemplate.Services.Data.SelectVOD;
     using AspNetCoreTemplate.Services.Data.Vicovete;
     using AspNetCoreTemplate.Services.Mapping;
@@ -69,6 +70,7 @@
             services.AddTransient<IVicForUploadService, VicForUploadService>();
             services.AddTransient<ILeaderboardService, LeaderboardService>();
             services.AddTransient<ISelectVOD, SelectVOD>();
+            services.AddTransient<IFavVicoveService, FavVicoveService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

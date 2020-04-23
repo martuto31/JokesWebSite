@@ -50,6 +50,16 @@ var connection = new signalR.HubConnectionBuilder()
             $("li." + vicId).html("Успешно изтрихте вица!");
         });
 
+    connection.on('AddedToFav',
+        function (vicId) {
+            $("p." + vicId).html("Успешно добавихте вица към любими!");
+        });
+
+    connection.on('AlreadyAdded',
+        function (vicId) {
+            $("p." + vicId).html("Вече добавихте вица към любими!");
+        });
+
 
     connection.start().then(function () {
         console.log("connected");
@@ -77,7 +87,12 @@ $(".delete").click(function () {
     });
 });
 
-
+$(".add-favourite").click(function () {
+    var VicId = $(this).data("id");
+    connection.invoke("AddToFavourite", parseInt(VicId)).catch(function (err) {
+        return console.error(err.toString());
+    });
+});
     //e.preventDefault();
 
 //$(function () {

@@ -18,7 +18,9 @@
 
         public ICollection<Badges> Badges { get; set; } = new HashSet<Badges>();
 
-        public ICollection<Vicove> Vicove { get; set; } = new List<Vicove>();
+        public ICollection<Vicove> Vicove { get; set; } = new HashSet<Vicove>();
+
+        public ICollection<FavouriteVicove> FavouriteVicove { get; set; } = new List<FavouriteVicove>();
 
         // snimki, roli
     }

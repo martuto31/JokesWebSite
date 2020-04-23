@@ -1,7 +1,11 @@
 ﻿@using AspNetCoreTemplate.Web.ViewModels.Vicove
 @using AspNetCoreTemplate.Web.Infrastructure
 @using AspNetCoreTemplate.Services.Data.Vicovete
+@using Microsoft.AspNetCore.Identity
+@using AspNetCoreTemplate.Data.Models
+@using AspNetCoreTemplate.Common
 @model PaginatedList<VicoveViewModel>
+@inject SignInManager<ApplicationUser> signInManager
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -23,15 +27,26 @@
     <ul class="list-group list-group-flush" style="background-color: lightblue">
         @foreach (var vic in Model)
         {
-            <li class="list-group-item list-group-item-primary"> @*style="background-color: lightcyan"*@
+            <li class="list-group-item list-group-item-primary">
+                @*style="background-color: lightcyan"*@
                 <p>
                     @vic.Content
                 </p>
+
                 <button data-id="@vic.Id" class="@vic.Id btn like-button likeButton">
                     Харесване
                     <i class="far fa-thumbs-up @vic.Id"></i>
                     <span class="@vic.Id">@vic.Points</span>
                 </button>
+
+                <button data-id="@vic.Id" class="@vic.Id btn add-favourite favButton">
+                     Добави към любими
+                </button>
+
+                <span style="white-space: nowrap; float:right">
+                   @vic.CreatedOn.Date.ToShortDateString()
+                </span>
+
                 <p class="@vic.Id"></p>
             </li>
         }

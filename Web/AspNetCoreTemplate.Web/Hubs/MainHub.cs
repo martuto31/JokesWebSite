@@ -20,11 +20,20 @@
         private readonly IVicForUploadService vicForUploadService;
         private readonly IRepository<Leaderboard> leaderboardRepository;
         private readonly IRepository<Account> accountRepository;
+        private readonly IRepository<FavouriteVicove> favVicoveRepository;
 
         // private readonly IUserIdProvider userIdProvider;
 
         // private readonly UserManager<IdentityUser> userManager;
-        public MainHub(IRepository<Vicove> vicoveRepository, IVicLikeService vicLikeService, IRepository<VicForReview> vicReviewRepository, IVicForUploadService vicForUploadService, IRepository<Leaderboard> leaderboardRepository, IRepository<Account> accountRepository/*IUserIdProvider userIdProvider,*/ /*UserManager<IdentityUser> userManager*/)
+        public MainHub(
+            IRepository<Vicove> vicoveRepository,
+            IVicLikeService vicLikeService,
+            IRepository<VicForReview> vicReviewRepository,
+            IVicForUploadService vicForUploadService,
+            IRepository<Leaderboard> leaderboardRepository,
+            IRepository<Account> accountRepository,
+            IRepository<FavouriteVicove> favVicoveRepository)
+            /*IUserIdProvider userIdProvider,*/ /*UserManager<IdentityUser> userManager*/
         {
             this.vicoveRepository = vicoveRepository;
             this.vicLikeService = vicLikeService;
@@ -32,6 +41,7 @@
             this.vicForUploadService = vicForUploadService;
             this.leaderboardRepository = leaderboardRepository;
             this.accountRepository = accountRepository;
+            this.favVicoveRepository = favVicoveRepository;
 
             // this.userIdProvider = userIdProvider;
             // this.userManager = userManager;
@@ -181,6 +191,45 @@
             await this.vicReviewRepository.SaveChangesAsync();
 
             await this.Clients.All.SendAsync("Delete", vicId);
+        }
+
+        public async Task AddToFavourite(int vicId)
+        {
+            var vic = this.vicoveRepository.All()
+                .FirstOrDefault(x => x.Id == vicId);
+
+            var currentUser = this.Context.User.Identity.Name;
+
+            var currentAcc = this.accountRepository.All()
+                    .FirstOrDefault(x => x.User == currentUser);
+
+            var favVic = new FavouriteVicove()
+            {
+                AccountID = currentAcc.Id,
+                Account = currentAcc,
+                Content = vic.Content,
+                CreatedOn = vic.CreatedOn,
+                Points = vic.Points,
+                Creator = vic.Creator,
+                DateTime = vic.DateTime,
+                VicLikes = vic.VicLikes,
+                VicType = vic.VicType,
+                ModifiedOn = DateTime.UtcNow,
+            };
+
+            if (this.favVicoveRepository.All().FirstOrDefault(x => x.DateTime == favVic.DateTime) == null)
+            {
+                currentAcc.FavouriteVicove.Add(favVic);
+                await this.accountRepository.SaveChangesAsync();
+
+                // await this.favVicoveRepository.AddAsync(favVic);
+                // await this.favVicoveRepository.SaveChangesAsync();
+                await this.Clients.All.SendAsync("AddedToFav", vicId);
+            }
+            else
+            {
+                await this.Clients.All.SendAsync("AlreadyAdded", vicId);
+            }
         }
     }
 }

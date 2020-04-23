@@ -40,14 +40,13 @@
 
         public IActionResult Index()
         {
-            var vicNaDenq = this.vicoveService.VicNaDenq();
+            // var vicNaDenq = this.vicoveService.VicNaDenq();
 
-            if (vicNaDenq == null)
-            {
-                return this.NotFound();
-            }
-
-            return this.View(vicNaDenq);
+            // if (vicNaDenq == null)
+            // {
+            //    return this.NotFound();
+            // }
+            return this.View(/*vicNaDenq*/);
         }
 
         [Authorize(Roles = "Admin")]

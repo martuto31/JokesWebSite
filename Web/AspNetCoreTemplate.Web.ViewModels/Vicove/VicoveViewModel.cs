@@ -8,7 +8,7 @@
     using AspNetCoreTemplate.Web.Infrastructure;
     using AutoMapper;
 
-    public class VicoveViewModel : IMapFrom<Vicove>, IHaveCustomMappings
+    public class VicoveViewModel : IMapFrom<Vicove>, IMapFrom<FavouriteVicove> ,IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -27,6 +27,7 @@
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Vicove, PaginatedList<VicoveViewModel>>();
+            configuration.CreateMap<FavouriteVicove, PaginatedList<VicoveViewModel>>();
         }
     }
 }

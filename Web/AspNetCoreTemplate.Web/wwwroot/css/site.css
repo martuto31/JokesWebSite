@@ -1,5 +1,40 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+.pointsBox {
+    height: 160px;
+    width: 200px;
+    padding: 10px;
+    margin: 5px;
+    background-color: limegreen;
+    color: white;
+    border: 2px thin black;
+    font-size: 15px;
+    font: bold 12 px;
+    font-family: 'Comic Sans MS';
+}
+
+.boxx {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 160px;
+    margin: 15px;
+    padding: 25px 10px 24px;
+    overflow: hidden;
+    border: none;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    font: normal 16px/1 "Times New Roman", Times, serif;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    background: #0199d9;
+    -webkit-box-shadow: 0 5px 4px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 5px 4px 0 rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
 a.blueBtn {
     outline-color: black;
     background-color: turquoise;
@@ -20,12 +55,12 @@ a.blueActive {
 
 .sortBtn {
     border: 1px inset lightgray;
-    background-color: #a7a9ac;
+    background-color: brown;
     color: black;
 }
 
     .sortBtn:hover {
-        background-color: dimgray;
+        background-color: darkred;
         color: white;
     }
 
@@ -38,6 +73,19 @@ a.bluePaginationActive {
     background-color: white;
     color: #0275d8;
 }
+
+.favButton {
+    background-color: lightblue;
+    font-size: 15px;
+    font: bold 12 px;
+    font-family: 'Comic Sans MS';
+    color: #294972;
+    border: 1px thin #294972;
+    border-color: #294972;
+}
+    .favButton:hover {
+        background-color: skyblue;
+    }
 
 .BackgroundBlueGradient {
     background-image: linear-gradient(to bottom, #50c9c3, #96deda);
@@ -69,6 +117,15 @@ a.bluePaginationActive {
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+
+.likes {
+    background-color: lightblue;
+    font-size: 15px;
+    font: bold 12 px;
+    font-family: 'Comic Sans MS';
+    border: 1px thin #294972;
+    border-color: #294972;
 }
 
 .likeButton {

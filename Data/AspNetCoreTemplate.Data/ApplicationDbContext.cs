@@ -106,6 +106,12 @@
                 .HasOne(a => a.Account)
                 .WithMany(b => b.Badges)
                 .HasForeignKey(a => a.AccountId);
+
+            builder
+               .Entity<FavouriteVicove>()
+               .HasOne(a => a.Account)
+               .WithMany(v => v.FavouriteVicove)
+               .HasForeignKey(a => a.AccountID);
         }
 
         private static void ConfigureUserIdentityRelations(ModelBuilder builder)
