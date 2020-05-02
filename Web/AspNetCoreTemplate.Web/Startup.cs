@@ -71,6 +71,7 @@
             services.AddTransient<ILeaderboardService, LeaderboardService>();
             services.AddTransient<ISelectVOD, SelectVOD>();
             services.AddTransient<IFavVicoveService, FavVicoveService>();
+            services.AddApplicationInsightsTelemetry();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

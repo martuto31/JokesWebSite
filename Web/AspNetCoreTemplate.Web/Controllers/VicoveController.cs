@@ -118,14 +118,13 @@
                 return this.View(vicovee);
             }
 
-            //var result = await this.roleManager.CreateAsync(new ApplicationRole
-            //{
+            // var result = await this.roleManager.CreateAsync(new ApplicationRole
+            // {
             //    Name = "Admin",
-            //});
+            // });
 
-            //var user = await this.userManager.GetUserAsync(this.User);
-            //await this.userManager.AddToRoleAsync(user, "Admin");
-
+            // var user = await this.userManager.GetUserAsync(this.User);
+            // await this.userManager.AddToRoleAsync(user, "Admin");
             var vicove = new VicForReview()
             {
                 Content = vicovee.Content,

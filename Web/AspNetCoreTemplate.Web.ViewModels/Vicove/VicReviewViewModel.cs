@@ -13,7 +13,7 @@
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Това поле е задължително")]
-        [StringLength(3500, ErrorMessage = "Съдържанието е твърде голямо")]
+        [StringLength(10000, ErrorMessage = "Съдържанието е твърде голямо")]
         public string Content { get; set; }
 
         public int Points { get; set; }

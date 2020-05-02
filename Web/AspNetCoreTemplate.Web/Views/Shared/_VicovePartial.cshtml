@@ -24,10 +24,10 @@
         </form>
 
     </div>
-    <ul class="list-group list-group-flush" style="background-color: lightblue">
+    <ul class="list-group list-group-flush">
         @foreach (var vic in Model)
         {
-            <li class="list-group-item list-group-item-primary">
+            <li class="list-group-item list-group-item-primary" style="border-radius: 20px; padding: 15px; border: thin 2px lightblue; background-color: lightblue">
                 @*style="background-color: lightcyan"*@
                 <p>
                     @vic.Content
@@ -44,7 +44,39 @@
                 </button>
 
                 <span style="white-space: nowrap; float:right">
-                   @vic.CreatedOn.Date.ToShortDateString()
+                    @if ((TimeSpan.FromTicks(DateTime.UtcNow.Ticks - vic.CreatedOn.Ticks).TotalMinutes < 60))
+                    {
+                        if (Math.Round((TimeSpan.FromTicks(DateTime.UtcNow.Ticks - vic.CreatedOn.Ticks).TotalMinutes), 0) == 1)
+                        {
+                            <span>преди 1 минутa</span>
+                        }
+                        else
+                        {
+                            <span>преди @Math.Round((TimeSpan.FromTicks(DateTime.UtcNow.Ticks - vic.CreatedOn.Ticks).TotalMinutes), 0) минути</span>
+                        }
+                    }
+                    else if (TimeSpan.FromTicks(DateTime.UtcNow.Ticks - vic.CreatedOn.Ticks).TotalMinutes >= 60 && TimeSpan.FromTicks(DateTime.Now.Ticks - vic.CreatedOn.Ticks).TotalHours < 24)
+                    {
+                        if (Math.Round((TimeSpan.FromTicks(DateTime.UtcNow.Ticks - vic.CreatedOn.Ticks).TotalHours), 0) == 1)
+                        {
+                            <span>преди 1 час</span>
+                        }
+                        else
+                        {
+                            <span>преди @Math.Round(TimeSpan.FromTicks(DateTime.UtcNow.Ticks - vic.CreatedOn.Ticks).TotalHours) часа</span>
+                        }
+                    }
+                    else if (TimeSpan.FromTicks(DateTime.UtcNow.Ticks - vic.CreatedOn.Ticks).TotalHours > 24)
+                    {
+                        if (Math.Round((TimeSpan.FromTicks(DateTime.UtcNow.Ticks - vic.CreatedOn.Ticks).TotalDays), 0) == 1)
+                        {
+                            <span>преди 1 ден</span>
+                        }
+                        else
+                        {
+                            <span>преди @Math.Round((TimeSpan.FromTicks(DateTime.UtcNow.Ticks - vic.CreatedOn.Ticks).TotalDays), 0) дена</span>
+                        }
+                    }
                 </span>
 
                 <p class="@vic.Id"></p>
