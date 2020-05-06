@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
+    @*<title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>*@
 
     <environment names="Development">
         <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
@@ -20,6 +20,16 @@
         <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/fontawesome-free-5.12.1-web/css/all.css" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="~/favicon.ico">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165364153-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-165364153-2');
+        </script>
+        <script data-ad-client="ca-pub-8495115122736267" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </environment>
 </head>
 <body style="background-color: lightgray">

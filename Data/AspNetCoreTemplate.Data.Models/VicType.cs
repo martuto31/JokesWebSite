@@ -37,5 +37,14 @@
 
         [Display(Name = "Животни")]
         Zhivotni = 11,
+
+        [Display(Name = "Радио Ереван")]
+        RadioErevan = 12,
+
+        [Display(Name = "Тъпизми")]
+        Tupizmi = 13,
+
+        [Display(Name = "Ученически бисери")]
+        UchenicheskiBiseri = 14,
     }
 }

@@ -103,14 +103,14 @@
                         User = user.UserName,
                     };
 
-                    //var check = this.accountRepository.All()
-                    //    .FirstOrDefault(x => x.User == acc.User);
+                    var check = this.accountRepository.All()
+                        .FirstOrDefault(x => x.User == acc.User);
 
-                    //if (check == null)
-                    //{
-                    //    await this.accountRepository.AddAsync(acc);
-                    //    await this.accountRepository.SaveChangesAsync();
-                    //}
+                    if (check == null)
+                    {
+                        await this.accountRepository.AddAsync(acc);
+                        await this.accountRepository.SaveChangesAsync();
+                    }
 
                     await this._emailSender.SendEmailAsync(this.Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");

@@ -10,7 +10,7 @@
     public class Vicove : BaseModel<int>
     {
         [Required]
-        [MaxLength(300)]
+        [MaxLength(10000)]
         public string Content { get; set; }
 
         public int? Points { get; set; }

@@ -8,7 +8,7 @@
     using AspNetCoreTemplate.Web.Infrastructure;
     using AutoMapper;
 
-    public class VicoveViewModel : IMapFrom<Vicove>, IMapFrom<FavouriteVicove> ,IHaveCustomMappings
+    public class VicoveViewModel : IMapFrom<Vicove>, IMapFrom<FavouriteVicove>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -22,7 +22,7 @@
 
         public DateTime CreatedOn { get; set; }
 
-        public IEnumerable<VicLike> VicLikes { get; set; } // = new HashSet<VicLike>();
+        public IEnumerable<VicLike> VicLikes { get; set; } = new HashSet<VicLike>();
 
         public void CreateMappings(IProfileExpression configuration)
         {

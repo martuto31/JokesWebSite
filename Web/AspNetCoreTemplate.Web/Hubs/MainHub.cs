@@ -76,8 +76,8 @@
             currentUser = this.leaderboardRepository.All()
                 .FirstOrDefault(x => x.UserName == userName);
 
-            // var ip = this.Context.GetHttpContext().Connection.RemoteIpAddress.ToString();
-            var ip = this.Context.GetHttpContext().Connection.LocalIpAddress.ToString();
+            var ip = this.Context.GetHttpContext().Connection.RemoteIpAddress.ToString();
+            //var ip = this.Context.GetHttpContext().Connection.LocalIpAddress.ToString();
 
             // var currentUser = await this.userManager.GetUserAsync(this.Context.User);
 

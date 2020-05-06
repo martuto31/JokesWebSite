@@ -11,10 +11,11 @@
     public class SendGridEmailSender : IEmailSender
     {
         private readonly SendGridClient client;
+        private string apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
 
-        public SendGridEmailSender(string apiKey)
+        public SendGridEmailSender()
         {
-            this.client = new SendGridClient(apiKey);
+            this.client = new SendGridClient(this.apiKey);
         }
 
         public async Task SendEmailAsync(string from, string fromName, string to, string subject, string htmlContent, IEnumerable<EmailAttachment> attachments = null)

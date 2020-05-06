@@ -55,13 +55,12 @@ a.blueActive {
 
 .sortBtn {
     border: 1px inset lightgray;
-    background-color: darkturquoise;
+    background-color: turquoise;
     color: black;
 }
 
     .sortBtn:hover {
-        background-color: turquoise;
-        color: white;
+        background-color: darkturquoise;
     }
 
 .sortBtnActive {

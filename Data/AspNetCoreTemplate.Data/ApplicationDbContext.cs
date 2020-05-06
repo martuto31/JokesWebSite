@@ -112,6 +112,14 @@
                .HasOne(a => a.Account)
                .WithMany(v => v.FavouriteVicove)
                .HasForeignKey(a => a.AccountID);
+
+            builder.Entity<Account>()
+                .Property(x => x.AllPoints)
+                .HasDefaultValue(0);
+
+            builder.Entity<Account>()
+                .Property(x => x.UploadedVicove)
+                .HasDefaultValue(0);
         }
 
         private static void ConfigureUserIdentityRelations(ModelBuilder builder)

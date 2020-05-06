@@ -20,13 +20,20 @@
         private readonly IRepository<VicForReview> vicReviewRepository;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<ApplicationRole> roleManager;
+        private readonly IRepository<Account> accRepo;
 
-        public VicoveController(IVicoveService vicoveService, IRepository<VicForReview> vicReviewRepository, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
+        public VicoveController(
+            IVicoveService vicoveService,
+            IRepository<VicForReview> vicReviewRepository,
+            UserManager<ApplicationUser> userManager,
+            RoleManager<ApplicationRole> roleManager,
+            IRepository<Account> accRepo)
         {
             this.vicoveService = vicoveService;
             this.vicReviewRepository = vicReviewRepository;
             this.userManager = userManager;
             this.roleManager = roleManager;
+            this.accRepo = accRepo;
         }
 
         public string PointsSort { get; set; }
@@ -122,6 +129,22 @@
             // {
             //    Name = "Admin",
             // });
+            // var user = await this.userManager.GetUserAsync(this.User);
+
+            // var acc = new Account()
+            // {
+            //    CreatedOn = DateTime.UtcNow,
+            //    User = user.UserName,
+            // };
+
+            // var check = this.accRepo.All()
+            //            .FirstOrDefault(x => x.User == acc.User);
+
+            // if (check == null)
+            // {
+            //    await this.accRepo.AddAsync(acc);
+            //    await this.accRepo.SaveChangesAsync();
+            // }
 
             // var user = await this.userManager.GetUserAsync(this.User);
             // await this.userManager.AddToRoleAsync(user, "Admin");
@@ -456,6 +479,105 @@
                     break;
                 default:
                     vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.CherenHumor);
+                    break;
+            }
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = 10;
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
+        }
+
+        public async Task<IActionResult> RadioErevan(int? pageNumber, string s)
+        {
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.RadioErevan);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.RadioErevan);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.RadioErevan);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.RadioErevan);
+                    break;
+            }
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = 10;
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
+        }
+
+        public async Task<IActionResult> Tupizmi(int? pageNumber, string s)
+        {
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Tupizmi);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.Tupizmi);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.Tupizmi);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.Tupizmi);
+                    break;
+            }
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = 10;
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
+        }
+
+        public async Task<IActionResult> UchenicheskiBiseri(int? pageNumber, string s)
+        {
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.UchenicheskiBiseri);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.UchenicheskiBiseri);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.UchenicheskiBiseri);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.UchenicheskiBiseri);
                     break;
             }
 

@@ -10,9 +10,9 @@
     {
         public string User { get; set; }
 
-        public int? AllPoints { get; set; }
+        public int AllPoints { get; set; }
 
-        public int? UploadedVicove { get; set; }
+        public int UploadedVicove { get; set; }
 
         public DateTime LastOnline { get; set; }
 
