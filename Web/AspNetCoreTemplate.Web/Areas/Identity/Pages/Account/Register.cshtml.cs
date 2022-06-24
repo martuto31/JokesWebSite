@@ -83,7 +83,18 @@
             this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Username, Email = this.Input.Email };
+                var user = new ApplicationUser { UserName = this.Input.Username, Email = this.Input.Email};
+
+                var acc = new Account()
+                {
+                    CreatedOn = DateTime.UtcNow,
+                    User = user.UserName,
+                    AllPoints = 0,
+                    UploadedVicove = 0,
+                };
+                await this.accountRepository.AddAsync(acc);
+                await this.accountRepository.SaveChangesAsync();
+
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
@@ -96,21 +107,6 @@
                         pageHandler: null,
                         values: new { area = "Identity", userId = user.Id, code = code },
                         protocol: this.Request.Scheme);
-
-                    var acc = new Account()
-                    {
-                        CreatedOn = DateTime.UtcNow,
-                        User = user.UserName,
-                    };
-
-                    var check = this.accountRepository.All()
-                        .FirstOrDefault(x => x.User == acc.User);
-
-                    if (check == null)
-                    {
-                        await this.accountRepository.AddAsync(acc);
-                        await this.accountRepository.SaveChangesAsync();
-                    }
 
                     await this._emailSender.SendEmailAsync(this.Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
