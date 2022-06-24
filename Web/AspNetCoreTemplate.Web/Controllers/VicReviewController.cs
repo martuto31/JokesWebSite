@@ -13,7 +13,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Administrator")]
     public class VicReviewController : BaseController
     {
         // Da mi zarejda na dadena stranica vsichkite vicove za review i da ima buton udobri,

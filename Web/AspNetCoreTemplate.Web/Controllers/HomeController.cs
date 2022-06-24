@@ -49,7 +49,7 @@
             return this.View(/*vicNaDenq*/);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> SelectVOD(int? pageNumber)
         {
             var vicove = this.selectVODservice.GetAllFromToday<VicoveViewModel>();

@@ -49,7 +49,7 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Leaderboard" asp-action="LeaderboardShow">Класация</a>
                     </li>
-                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
                     {
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="VicReview" asp-action="ShowAllForReview">Удобрение</a>
