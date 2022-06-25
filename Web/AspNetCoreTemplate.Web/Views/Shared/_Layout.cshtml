@@ -34,8 +34,8 @@
     </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
-<body style="background-color: lightgray">
-    <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3 sticky-top" style="background-color:lightgray">
+<body class="mainBody">
+    <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3 sticky-top">
         <div class="container" style="font-size:large">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -51,7 +51,7 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Leaderboard" asp-action="LeaderboardShow">Класация</a>
                     </li>
-                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
                     {
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="VicReview" asp-action="ShowAllForReview">Удобрение</a>
@@ -65,8 +65,8 @@
         </div>
     </nav>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3" style="background-color:#294972">
-            <div class="container" style="font-size:large">
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3 navbarBackgroundColour">
+            <div class="container navbar-background-colour" style="font-size:large">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -116,7 +116,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer navbar-light" style="background-color:#294972">
+    <footer class="border-top footer navbar-light navbarBackgroundColour">
         <div class="container">
             &copy; @DateTime.Now.Year - М.Петров - <a asp-area="" asp-controller="Home" asp-action="Privacy"></a>
         </div>

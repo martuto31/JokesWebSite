@@ -96,7 +96,7 @@
             // currentVic.VicLikes.FirstOrDefault(x => x.VicId == liked.VicId && x.IPAdress == liked.IPAdress);
             bool checkIfExist = this.vicLikeService.Exists(liked.VicId, liked.IPAdress); // VicId.Value
             var check = currentVic?.VicLikes.Where(x => x.VicId == vicId).FirstOrDefault(x => x.IPAdress == liked.IPAdress); // .First
-            var asd = 0;
+
             if (checkIfExist == false)
             {
                 currentVic.VicLikes.Add(liked);

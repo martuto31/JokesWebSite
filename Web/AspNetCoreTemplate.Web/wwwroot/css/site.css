@@ -35,6 +35,14 @@ for details on configuring this project to bundle and minify static web assets. 
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
+.navbarBackgroundColour {
+    background-color: #cb997e;
+}
+
+.mainBody{
+    background-color: lightgray;
+}
+
 a.blueBtn {
     outline-color: black;
     background-color: turquoise;
