@@ -32,8 +32,8 @@
         <script data-ad-client="ca-pub-8495115122736267" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </environment>
 </head>
-<body style="background-color: lightgray">
-    <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3" style="background-color:lightgray">
+<body class="mainBody">
+    <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3 mainBody">
         <div class="container" style="font-size:large">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -63,7 +63,7 @@
         </div>
     </nav>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3 navbarBackgroundColour">
+        <nav class="navbar navbar-expand-sm border-bottom box-shadow mb-3 navbarBackgroundColour">
             <div class="container" style="font-size:large">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -95,13 +95,13 @@
         </nav>
     </header>
 
-    <div class="container">
+    <div class="container mainBody">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
-            <div class="container-fluid">
+            <div class="container-fluid mainBody">
                 <div class="row">
 
-                    <div class="col-md-8 mx-auto" style="background-color: lightgray; color: #2A3132;font-family: 'Malgun Gothic'">
+                    <div class="col-md-8 mx-auto" style="color: #2A3132;font-family: 'Malgun Gothic'">
                         @this.RenderBody()
                     </div>
 

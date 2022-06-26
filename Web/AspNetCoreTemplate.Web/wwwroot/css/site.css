@@ -36,11 +36,11 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 .navbarBackgroundColour {
-    background-color: #cb997e;
+    background-color: #457b9d;
 }
 
-.mainBody{
-    background-color: lightgray;
+.mainBody {
+    background-color: #C3E0E5;
 }
 
 a.blueBtn {

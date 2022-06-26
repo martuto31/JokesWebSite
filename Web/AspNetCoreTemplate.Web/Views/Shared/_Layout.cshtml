@@ -100,14 +100,14 @@
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
-            <div class="container-fluid">
+            <div class="container-fluid mainBody">
                 <div class="row">
                     <partial name="_VicCategoryPartial" />
 
-                    <div class="col-md-8" style="background-color: lightgray; color: #2A3132; font-family: 'Malgun Gothic'">
+                    <div class="col-md-8" style="color: #2A3132; font-family: 'Malgun Gothic'">
                         @this.RenderBody()
                     </div>
-
+                    
                     <div class="container-md-2">
                         <h1></h1>
                     </div>
@@ -116,7 +116,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer navbar-light navbarBackgroundColour">
+    <footer class="border-top footer navbarBackgroundColour">
         <div class="container">
             &copy; @DateTime.Now.Year - М.Петров - <a asp-area="" asp-controller="Home" asp-action="Privacy"></a>
         </div>
