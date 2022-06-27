@@ -35,7 +35,7 @@
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body class="mainBody">
-    <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3 sticky-top">
+    <nav class="navbar navbar-expand-sm border-bottom navbar-light box-shadow mb-3 sticky-top main-nav">
         <div class="container" style="font-size:large">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -64,38 +64,24 @@
             </div>
         </div>
     </nav>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3 navbarBackgroundColour">
-            <div class="container navbar-background-colour" style="font-size:large">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse" id="navbarNav">
-                    <ul class="navbar-nav flex-grow-1 mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Vicove" asp-action="NaiPopulqrni">Най-популярни</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Vicove" asp-action="NaiNovi">Най-нови</a>
-                        </li>
-                        @if (signInManager.IsSignedIn(User))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="MyProfile" asp-action="Index">Моят профил</a>
-                            </li>
-                        }
-                        @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </li>*@
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    
+    <nav class="mainBody secondary-nav">
+        <ul>
+            <li>
+                <a asp-area="" asp-controller="Vicove" asp-action="NaiPopulqrni">Най-популярни</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Vicove" asp-action="NaiNovi">Най-нови</a>
+            </li>
+                @if (signInManager.IsSignedIn(User))
+                 {
+                    <li style="margin-left: 36.5vw;">
+                        <a  asp-area="" asp-controller="MyProfile" asp-action="Index">Моят профил</a>
+                    </li>
+                 }
+        </ul>
+    </nav>
+    
 
     <div class="container">
         <partial name="_CookieConsentPartial" />
@@ -116,7 +102,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer navbarBackgroundColour">
+    <footer class="border-top footer main-nav">
         <div class="container">
             &copy; @DateTime.Now.Year - М.Петров - <a asp-area="" asp-controller="Home" asp-action="Privacy"></a>
         </div>
