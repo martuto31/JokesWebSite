@@ -23,6 +23,7 @@
         <link rel="icon" type="image/x-icon" href="~/favicon.ico">
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165364153-2"></script>
+        <script src="https://kit.fontawesome.com/5d556dd8df.js" crossorigin="anonymous"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag() { dataLayer.push(arguments); }
@@ -35,7 +36,7 @@
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body class="mainBody">
-    <nav class="navbar navbar-expand-sm border-bottom navbar-light box-shadow mb-3 sticky-top main-nav">
+    <nav class="navbar navbar-expand-sm border-bottom navbar-dark box-shadow mb-3 sticky-top main-nav">
         <div class="container" style="font-size:large">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -103,7 +104,7 @@
     </div>
 
     <footer class="border-top footer main-nav">
-        <div class="container">
+        <div class="container text-light">
             &copy; @DateTime.Now.Year - М.Петров - <a asp-area="" asp-controller="Home" asp-action="Privacy"></a>
         </div>
     </footer>

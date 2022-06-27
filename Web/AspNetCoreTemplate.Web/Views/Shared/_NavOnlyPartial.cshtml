@@ -33,7 +33,7 @@
     </environment>
 </head>
 <body class="mainBody">
-    <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3 sticky-top main-nav">
+    <nav class="navbar navbar-expand-sm navbar-dark border-bottom box-shadow mb-3 sticky-top main-nav">
         <div class="container" style="font-size:large">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -74,8 +74,8 @@
         </main>
     </div>
 
-    <footer class="border-top footer navbar-light main-nav">
-        <div class="container">
+    <footer class="border-top footer main-nav">
+        <div class="container text-light">
             &copy; @DateTime.Now.Year - М.Петров - <a asp-area="" asp-controller="Home" asp-action="Privacy"></a>
         </div>
     </footer>

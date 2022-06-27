@@ -9,6 +9,9 @@
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+<head>
+    <script src="https://kit.fontawesome.com/5d556dd8df.js" crossorigin="anonymous"></script>
+</head>
 <div>
     <div class="navbar justify-content-sm-start">
         <form>
@@ -32,10 +35,8 @@
             <p>
                 @vic.Content
             </p>
-
             <button data-id="@vic.Id" class="@vic.Id btn like-button likeButton">
-                Харесване
-                <i class="far fa-thumbs-up @vic.Id"></i>
+                <i class="fa fa-thumbs-up"></i>
                 <span class="@vic.Id">@vic.Points</span>
             </button>
 
