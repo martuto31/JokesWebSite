@@ -72,10 +72,6 @@ for details on configuring this project to bundle and minify static web assets. 
     background-color: #023047;
 }
 
-.main-nav a:hover{
-    border-bottom: solid 1px black;
-}
-
 a.blueBtn {
     outline-color: black;
     background-color: turquoise;

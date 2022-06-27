@@ -1,13 +1,14 @@
-﻿using AspNetCoreTemplate.Data.Common.Repositories;
-using AspNetCoreTemplate.Data.Models;
-using AspNetCoreTemplate.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace AspNetCoreTemplate.Services.Data.MyProfile
+﻿namespace AspNetCoreTemplate.Services.Data.MyProfile
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+    using AspNetCoreTemplate.Data.Common.Repositories;
+    using AspNetCoreTemplate.Data.Models;
+    using AspNetCoreTemplate.Services.Mapping;
+
     public class FavVicoveService : IFavVicoveService
     {
         private readonly IRepository<Vicove> vicoveRepository;
