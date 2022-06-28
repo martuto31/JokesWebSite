@@ -66,8 +66,8 @@
             var vicove = this.favVicoveService.GetFavouriteVicove<VicoveViewModel>(acc.Id);
 
             this.ViewData["user"] = acc.User;
-            this.ViewData["allPoints"] = acc.AllPoints;
-            this.ViewData["uploadedVicove"] = acc.UploadedVicove;
+            this.ViewData["allPoints"] = acc.AllPoints ?? 0;
+            this.ViewData["uploadedVicove"] = acc.UploadedVicove ?? 0;
 
             if (vicove == null)
             {

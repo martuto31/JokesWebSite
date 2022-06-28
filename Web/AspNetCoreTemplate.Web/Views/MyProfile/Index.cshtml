@@ -32,23 +32,6 @@
                 }
             </ul>
 
-            <div class="container-md-3">
-                <div class="boxx">
-                    <span style="font-size: 20px;">Общо харесвания</span>
-                    <i class="far fa-thumbs-up" style="font-size: 20px; justify-content:left; color: lightgray"></i>
-                    |
-                    <span style="font-size:20px;">@ViewData["allPoints"]</span>
-                </div>
-
-                <div class="boxx" style="background-color: #ed1e0b">
-                    <span style="font-size: 20px;">Общо качени вицове</span>
-                    <br />
-                    <i class="fas fa-align-left" style="font-size: 20px; justify-content:left; color: lightgray"></i>
-                    |
-                    <span style="font-size:20px;">@ViewData["uploadedVicove"]</span>
-                </div>
-            </div>
-
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
                     @if (Model.TotalPages > 1)
@@ -84,5 +67,23 @@
                 </ul>
             </nav>
         </div>
+
+        <div class="container-md-3">
+            <div class="boxx">
+                <span style="font-size: 20px;">Общо харесвания</span>
+                <i class="far fa-thumbs-up" style="font-size: 20px; justify-content:left; color: lightgray"></i>
+                |
+                <span style="font-size:20px;">@ViewData["allPoints"]</span>
+            </div>
+
+            <div class="boxx" style="background-color: #ed1e0b">
+                <span style="font-size: 20px;">Общо качени вицове</span>
+                <br />
+                <i class="fas fa-align-left" style="font-size: 20px; justify-content:left; color: lightgray"></i>
+                |
+                <span style="font-size:20px;">@ViewData["uploadedVicove"]</span>
+            </div>
+        </div>
+
     </div>
 </div>
