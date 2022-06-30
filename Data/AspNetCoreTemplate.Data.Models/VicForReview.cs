@@ -2,13 +2,15 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using AspNetCoreTemplate.Data.Common.Models;
 
     public class VicForReview : BaseModel<int>
     {
         [Required]
-        [MaxLength(10000)]
+        [Column(TypeName = "nvarchar(MAX)")]
+        [MaxLength(int.MaxValue)]
         public string Content { get; set; }
 
         [Range(1, int.MaxValue)]

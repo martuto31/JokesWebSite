@@ -4,13 +4,15 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using AspNetCoreTemplate.Data.Common.Models;
 
     public class Vicove : BaseModel<int>
     {
         [Required]
-        [MaxLength(10000)]
+        [Column(TypeName = "nvarchar(MAX)")]
+        [MaxLength(int.MaxValue)]
         public string Content { get; set; }
 
         public int? Points { get; set; }

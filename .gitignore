@@ -357,3 +357,5 @@ MigrationBackup/
 appsettings.Production.json
 *.min.css
 *.min.js
+/Data/AspNetCoreTemplate.Data/appsettings.json
+/Web/AspNetCoreTemplate.Web/appsettings.json
