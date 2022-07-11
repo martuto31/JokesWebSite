@@ -46,5 +46,8 @@
 
         [Display(Name = "Ученически бисери")]
         UchenicheskiBiseri = 14,
+
+        [Display(Name = "Медицински")]
+        Medicinski = 15,
     }
 }

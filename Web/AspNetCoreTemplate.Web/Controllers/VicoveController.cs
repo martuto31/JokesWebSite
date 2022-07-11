@@ -329,6 +329,39 @@
             return this.View(model);
         }
 
+        public async Task<IActionResult> Medicinski(int? pageNumber, string s)
+        {
+            this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
+            this.PointsSort = s == "Points" ? "points_desc" : string.Empty;
+            IQueryable<VicoveViewModel> vicove;
+            switch (s)
+            {
+                case "date_desc":
+                    vicove = this.vicoveService.GetLatestVicove<VicoveViewModel>(VicType.Medicinski);
+                    break;
+                case "Points":
+                    vicove = this.vicoveService.GetByLowestPoints<VicoveViewModel>(VicType.Medicinski);
+                    break;
+                case "points_desc":
+                    vicove = this.vicoveService.GetByMostPoints<VicoveViewModel>(VicType.Medicinski);
+                    break;
+                default:
+                    vicove = this.vicoveService.GetNewestVicove<VicoveViewModel>(VicType.Medicinski);
+                    break;
+            }
+
+            if (vicove == null)
+            {
+                return this.NotFound();
+            }
+
+            int pageSize = 10;
+
+            var model = await PaginatedList<VicoveViewModel>.CreateAsync(vicove, pageNumber ?? 1, pageSize);
+
+            return this.View(model);
+        }
+
         public async Task<IActionResult> Laforizmi(int? pageNumber, string s)
         {
             this.DateSort = string.IsNullOrEmpty(s) ? "date_desc" : string.Empty;
