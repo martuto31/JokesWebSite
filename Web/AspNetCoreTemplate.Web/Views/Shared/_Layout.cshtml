@@ -47,11 +47,23 @@
                 <partial name="_LoginPartial" />
                 <ul class="navbar-nav nav-pills flex-grow-1 mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Vicove" asp-action="Create">Качи виц</a>
+                        <a class="nav-link" asp-controller="Vicove" asp-action="Create">Качи виц</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Leaderboard" asp-action="LeaderboardShow">Класация</a>
+                        <a class="nav-link" asp-controller="Leaderboard" asp-action="LeaderboardShow">Класация</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Vicove" asp-action="NaiPopulqrni">Най-популярни</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Vicove" asp-action="NaiNovi">Най-нови</a>
+                    </li>
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="MyProfile" asp-action="Index">Моят профил</a>
+                        </li>
+                    }
                     @if (signInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
                     {
                         <li class="nav-item">
@@ -64,23 +76,6 @@
                 </ul>
             </div>
         </div>
-    </nav>
-    
-    <nav class="mainBody secondary-nav">
-        <ul>
-            <li>
-                <a asp-area="" asp-controller="Vicove" asp-action="NaiPopulqrni">Най-популярни</a>
-            </li>
-            <li>
-                <a asp-area="" asp-controller="Vicove" asp-action="NaiNovi">Най-нови</a>
-            </li>
-                @if (signInManager.IsSignedIn(User))
-                 {
-                    <li style="margin-left: 36.5vw;">
-                        <a  asp-area="" asp-controller="MyProfile" asp-action="Index">Моят профил</a>
-                    </li>
-                 }
-        </ul>
     </nav>
     
 
