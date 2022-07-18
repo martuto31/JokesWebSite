@@ -38,7 +38,7 @@
 <body class="mainBody">
     <nav class="navbar navbar-expand-sm border-bottom navbar-dark box-shadow mb-3 sticky-top main-nav">
         <div class="container" style="font-size:large">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Vicove" asp-action="NaiNovi">@GlobalConstants.SystemName</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,32 +52,36 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Leaderboard" asp-action="LeaderboardShow">Класация</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Vicove" asp-action="NaiPopulqrni">Най-популярни</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Vicove" asp-action="NaiNovi">Най-нови</a>
-                    </li>
-                    @if (signInManager.IsSignedIn(User))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="MyProfile" asp-action="Index">Моят профил</a>
-                        </li>
-                    }
                     @if (signInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
                     {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="VicReview" asp-action="ShowAllForReview">Удобрение</a>
-                        </li>
-                        <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="VicReview" asp-action="ShowAllForReview">Удобрение</a>
+                    </li>
+                    @*<li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SelectVOD">Избери за виц на деня</a>
-                        </li>
+                        </li>*@
                     }
                 </ul>
             </div>
         </div>
     </nav>
-    
+
+    <nav class="mainBody secondary-nav">
+        <ul>
+            <li>
+                <a asp-area="" asp-controller="Vicove" asp-action="NaiPopulqrni">Най-популярни</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Vicove" asp-action="NaiNovi">Най-нови</a>
+            </li>
+            @if (signInManager.IsSignedIn(User))
+             {
+                <li style="margin:auto">
+                    <a asp-area="" asp-controller="MyProfile" asp-action="Index">Моят профил</a>
+                </li>
+             }
+        </ul>
+    </nav>
 
     <div class="container">
         <partial name="_CookieConsentPartial" />
@@ -89,7 +93,7 @@
                     <div class="col-md-8" style="color: #2A3132; font-family: 'Malgun Gothic'">
                         @this.RenderBody()
                     </div>
-                    
+
                     <div class="container-md-2">
                         <h1></h1>
                     </div>

@@ -35,28 +35,28 @@
 <body class="mainBody">
     <nav class="navbar navbar-expand-sm navbar-dark border-bottom box-shadow mb-3 main-nav">
         <div class="container" style="font-size:large">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Vicove" asp-action="NaiNovi">@GlobalConstants.SystemName</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse" id="navbarNav">
                 <partial name="_LoginPartial" />
-                <ul class="navbar-nav flex-grow-1 mr-auto mt-2 mt-lg-0">
+                <ul class="navbar-nav nav-pills flex-grow-1 mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Vicove" asp-action="Create">Качи виц</a>
+                        <a class="nav-link" asp-controller="Vicove" asp-action="Create">Качи виц</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Leaderboard" asp-action="LeaderboardShow">Класация</a>
+                        <a class="nav-link" asp-controller="Leaderboard" asp-action="LeaderboardShow">Класация</a>
                     </li>
                     @if (signInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
                     {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="VicReview" asp-action="ShowAllForReview">Удобрение</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SelectVOD">Избери за виц на деня</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="VicReview" asp-action="ShowAllForReview">Удобрение</a>
+                    </li>
+                    @*<li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SelectVOD">Избери за виц на деня</a>
+        </li>*@
                     }
                 </ul>
             </div>
