@@ -117,7 +117,7 @@
                 endpoints =>
                     {
                         endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                        endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                        endpoints.MapControllerRoute("default", "{controller=Vicove}/{action=NaiPopulqrni}/{id?}");
                         endpoints.MapControllerRoute("dailyVic", "{controller=Home}/{action=AddToDaily}/{id?}");
                         endpoints.MapHub<MainHub>("MainHub");
                         endpoints.MapRazorPages();
